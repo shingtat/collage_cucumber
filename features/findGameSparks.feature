@@ -1,7 +1,17 @@
-Feature: Find the GameSparks Website
+Feature: Searching for a homepage via Google
 
-Scenario: Search for the website
- Given I am on the Google homepage
- Then I will search for "GameSparks"
- Then I should see "Gamesparks"
- Then I will click the about link
+Background:
+
+	Given I am on the Google page
+
+Scenario: search on Google
+
+	When I enter "William Halfond" in the search box
+	And press search
+	Then I should see Google search results for "William Halfond"
+
+Scenario: search again
+
+	When I enter "GJ Halfond" in the search box
+	And press search
+	Then I should see Google search results for "GJ Halfond"
