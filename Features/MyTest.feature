@@ -1,4 +1,4 @@
-Feature: Reset functionality on login page of Application 
+ Feature: Reset functionality on login page of Application 
 
 
 Scenario: Verification of Reset button 
