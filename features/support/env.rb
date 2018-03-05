@@ -1,5 +1,6 @@
 require 'capybara'
-require 'cucumber'
+require 'capybara/cucumber'
+require 'rails_helper'
 require 'selenium-webdriver'
 
 Capybara.register_driver :chrome do |app|
