@@ -3,7 +3,7 @@ Given(/^I am on the Google homepage$/) do
 end
 
 Then(/^I will search for "(.*?)"$/) do |searchText|
-    fill_in 'gbqfq', :with =&gt; searchText
+    fill_in 'gbqfq', :with => searchText
 end
 
 Then(/^I should see "(.*?)"$/) do |expectedText|
