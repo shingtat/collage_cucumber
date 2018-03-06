@@ -12,12 +12,12 @@ Then(/^I should see gray background color$/) do
   expect(html.native.style('background-color')).to eq('rgba(211, 211, 211, 1)')
 end
 
-# When(/^input text loads$/)
-#   find_by_id("text_input")
-# end
-#
-# Then(/^I should see dark gray outline$/)
-#   text_input = page.find_by_id("text_input")
-#   puts text_input.native.style("border-style")
-#   expect(text_input.native.style('border-style')).to eq('rgba(211, 211, 211, 1)')
-# end
+When(/^input text loads$/) do
+  find_by_id("text_input")
+end
+
+Then(/^I should see dark gray outline$/) do
+  text_input = page.find_by_id("text_input")
+  puts text_input.native.style("border-style")
+  expect(text_input.native.style('border-style')).to eq('solid')
+end
