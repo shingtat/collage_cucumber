@@ -7,5 +7,9 @@ Background:
 
 Scenario: background color
 
-  When page loads
+  When html loads
   Then I should see gray background color
+
+Scenario: input text
+  When input text loads
+  Then I should see dark gray outline

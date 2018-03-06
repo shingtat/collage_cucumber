@@ -1,11 +1,23 @@
-Given(/^I am on the Index page$/) do
+Given(/^I am on the Index Page$/) do
   visit "http://localhost:8080/Implementation/index.html"
 end
 
-When(/^page loads$/) do
-  find_field("html")
+When(/^html loads$/) do
+  find("html")
 end
 
-Then(/^I should see gray background$/) do
-  expect(page.find('html').style('background-color')).to eq('#d3d3d3')
+Then(/^I should see gray background color$/) do
+  html = page.find("html")
+  puts html.native.style('background-color')
+  expect(html.native.style('background-color')).to eq('rgba(211, 211, 211, 1)')
 end
+
+# When(/^input text loads$/)
+#   find_by_id("text_input")
+# end
+#
+# Then(/^I should see dark gray outline$/)
+#   text_input = page.find_by_id("text_input")
+#   puts text_input.native.style("border-style")
+#   expect(text_input.native.style('border-style')).to eq('rgba(211, 211, 211, 1)')
+# end
