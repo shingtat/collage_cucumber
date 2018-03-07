@@ -2,7 +2,7 @@ Given(/^I am on the Index Page$/) do
   visit "http://localhost:8080/Implementation/index.html"
 end
 
-#Testing for White Background
+#Testing for Light Gray Background
 When(/^html loads$/) do
   find("html")
 end
