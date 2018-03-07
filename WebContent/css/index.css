@@ -2,8 +2,12 @@ html{
   background-color: #d3d3d3;
 }
 
+body{
+	margin: 0px;
+}
+
 /* centered input and button */
-#input{
+.centered{
   display: flex;
   position: absolute;
   left: 50%;
