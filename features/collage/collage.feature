@@ -4,16 +4,9 @@ Background:
 
 	Given I am on the Collage Page
 
-Scenario: background color
-
-  When html in collage page loads
-  Then I should see "white" background color
-
-Scenario: title at top of the page
-  When h1 text loads
-  Then I should see "black" text
-  Then I should see Reads Collage for topic X where "cat" is the topic
-  Then I should see font size is at least "24px"
+Scenario: collage underneath title
+	When collage loads
+	Then I should see the Collage underneath the Title
 
 Scenario: build another collage button
   When build another collage button loads
@@ -39,5 +32,4 @@ Scenario: export collage button
 
 Scenario: collage appearance
 	When collage loads
-	Then I should see the average size of the photos (after scaling) shall be 1 out of 20th of the available rectangular space
 	Then I should see Photos should be displayed in the collage with a random rotation of "-45" to "45" degrees

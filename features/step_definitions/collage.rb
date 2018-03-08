@@ -1,4 +1,5 @@
-require_relative 'functions'
+require_relative 'collage_appearance_helper'
+require_relative 'collage_helper'
 
 Given(/^I am on the Collage Page$/) do
   visit "http://localhost:8080/Implementation/collage.html"
@@ -45,6 +46,23 @@ Then(/^I should see font size is at least "([^"]*)"$/) do |size|
   expect(title.native.style('font-size')).to eq("26px")
 end
 
+#Testing for Collage appears underneath the Title
+Then(/^I should see the Collage underneath the Title$/) do
+	posTopic = topic_bot()
+
+	posImage = image_top()
+
+	# NEED TO CHECK FOR BUILD ANOTHER BUTTON
+
+	# posInput = input_top()
+
+	# posHistory = history_top()
+
+	expect(posImage).to be > posTopic
+	# expect(posImage).to be < posInput
+	# expect(posImage).to be < posHistory
+end
+
 #Testing for Build Another Collage button
 When(/^build another collage button loads$/) do
   find_by_id("build")
@@ -68,10 +86,10 @@ Then(/^I should see Clicking button allows the user to download a PNG image of t
 end
 
 #Size of image should match the displayed collage’s size
-Then(/^I should see Size of image should match the displayed collage’s size$/) do
-  num = File.open('byte.txt').read
-  expect(num.to_i).to eq(fileSize('/Users/Master/Downloads/downloadedCollage1.png'))
-end
+# Then(/^I should see Size of image should match the displayed collage’s size$/) do
+#   num = File.open('byte.txt').read
+#   expect(num.to_i).to eq(fileSize('/Users/Master/Downloads/downloadedCollage1.png'))
+# end
 
 Then(/^I should see Export Collage Button color is "([^"]*)"$/) do |color|
   export = page.find_by_id("export")
