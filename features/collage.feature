@@ -36,3 +36,8 @@ Scenario: export collage button
   Then I should see Export Collage Button color is "dark gray"
   Then I should see Export Collage Text color is "white"
   Then I should see Export Button labeled with text that says "Export Collage"
+
+Scenario: collage appearance
+	When collage loads
+	Then I should see the average size of the photos (after scaling) shall be 1 out of 20th of the available rectangular space
+	Then I should see Photos should be displayed in the collage with a random rotation of "-45" to "45" degrees
