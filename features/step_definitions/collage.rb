@@ -88,6 +88,13 @@ When(/^input box loads$/) do
   find_by_id("text_input")
 end
 
+Then(/^I should see the Input Box to the left of the Build Another Collage button$/) do
+	posInput = input_right()
+	posBuild = build_left()
+
+	expect(posInput).to be < posBuild
+end
+
 #Testing for Export Collage button in Collage page
 When(/^export collage button loads$/) do
   find_by_id("export")
