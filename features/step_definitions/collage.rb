@@ -1,4 +1,4 @@
-require('functions.rb')
+require_relative 'functions'
 
 Given(/^I am on the Collage Page$/) do
   visit "http://localhost:8080/Implementation/collage.html"
@@ -64,12 +64,13 @@ end
 Then(/^I should see Clicking button allows the user to download a PNG image of the collage$/) do
   click_button("export")
   sleep(5)
-  puts File.exist?('/Users/Master/Downloads/downloadedCollage1.png')
+  expect(File.exist?('/Users/Master/Downloads/downloadedCollage1.png')).to eq(true)
 end
 
 #Size of image should match the displayed collage’s size
 Then(/^I should see Size of image should match the displayed collage’s size$/) do
-
+  num = File.open('byte.txt').read
+  expect(num.to_i).to eq(fileSize('/Users/Master/Downloads/downloadedCollage1.png'))
 end
 
 Then(/^I should see Export Collage Button color is "([^"]*)"$/) do |color|
