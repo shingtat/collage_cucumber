@@ -4,10 +4,6 @@ Background:
 
 	Given I am on the Collage Page
 
-Scenario: collage underneath title
-	When collage loads
-	Then I should see the Collage underneath the Title
-
 Scenario: build another collage button
   When build another collage button loads
   Then I should see Button color is "dark gray"

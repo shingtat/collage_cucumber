@@ -68,6 +68,21 @@ When(/^build another collage button loads$/) do
   find_by_id("build")
 end
 
+Then(/^I should see the Build Another Collage button underneath the collage$/) do
+	posImage = image_bot()
+	posBuild = build_top()
+
+	expect(posBuild).to be > posImage
+end
+
+Then(/^I should see the Build Another Collage button right of center$/) do
+	buildLeft = build_left()
+
+	width = page.driver.browser.manage.window.size[0]
+
+	expect(buildLeft).to be > width/2
+end
+
 #Testing for Input Box in Collage page
 When(/^input box loads$/) do
   find_by_id("text_input")
