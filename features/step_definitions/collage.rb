@@ -1,3 +1,5 @@
+require('functions.rb')
+
 Given(/^I am on the Collage Page$/) do
   visit "http://localhost:8080/Implementation/collage.html"
 end
@@ -47,25 +49,6 @@ end
 When(/^build another collage button loads$/) do
   find_by_id("build")
 end
-
-#BELOW HAS SAME CODE AS BUILD BUTTON IN INDEX
-# # Dark Gray Button Color
-# Then(/^I should see Button color is "([^"]*)"$/) do |color|
-#   build_button = page.find_by_id("build")
-#   expect(build_button.native.style('background-color')).to eq('rgba(102, 102, 102, 1)')
-# end
-#
-# #Text color is white
-# Then(/^I should see Text color is "([^"]*)"$/) do |color|
-#   build_button = page.find_by_id("build")
-#   expect(build_button.native.style('color')).to eq('rgba(255, 255, 255, 1)')
-# end
-#
-# #Label Text is "Build Another Collage"
-# Then(/^I should see Button labeled with text that says "([^"]*)"$/) do |text|
-#   build_button = page.find_by_id("build")
-#   expect(build_button.text).to eq(text)
-# end
 
 #Testing for Input Box in Collage page
 When(/^input box loads$/) do

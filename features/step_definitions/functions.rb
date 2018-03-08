@@ -27,8 +27,3 @@ end
 def fileSize(filename)
   return File.size(filename)
 end
-
-
-puts findAverage("example.txt");
-puts angleConfirmation("example.txt");
-puts fileSize("/Users/Master/Downloads/downloadedCollage1.png")
