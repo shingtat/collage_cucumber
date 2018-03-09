@@ -167,20 +167,6 @@ Then(/^I should see the Previous Collage Picker at the bottom of the page$/) do
 
 end
 
-# Then(/^I should see Previous Collage Picker shows scaled down versions of all previous collages generated in the session by the user$/) do
-# 	prevImages = read_file("/Users/allenhuang/Desktop/send/imageLogs.txt")
-# 	thumbnails = get_history()
-# 	mainImageSize = get_main_image()
-# 	#verify all previous collages are present
-# 	thumbnails.each do |thumbnail|
-# 		expect(prevImages).to include thumbnail['src']
-# 		thumbSize = get_image_size(thumbnail)
-# 		expect(mainImageSize[0]).to be > thumbSize[0]
-# 		expect(mainImageSize[1]).to be > thumbSize[1]
-# 	end
-#
-# end
-
 And(/^I should see the Previous Collage Picker does not show collage currently in the main collage space$/) do
 	thumbnails = get_history()
 	thumbnails.each do |ele|
@@ -204,4 +190,40 @@ And(/^I should see the Previous Collage Picker displays all collages in a single
 	end
 	expect(tops.same_values?).to be true
 	expect(bots.same_values?).to be true
+end
+
+# Then(/^I should see Previous Collage Picker shows scaled down versions of all previous collages generated in the session by the user$/) do
+# 	prevImages = read_file("/Users/allenhuang/Desktop/send/imageLogs.txt")
+# 	thumbnails = get_history()
+# 	mainImageSize = get_main_image()
+# 	#verify all previous collages are present
+# 	thumbnails.each do |thumbnail|
+# 		expect(prevImages).to include thumbnail['src']
+# 		thumbSize = get_image_size(thumbnail)
+# 		expect(mainImageSize[0]).to be > thumbSize[0]
+# 		expect(mainImageSize[1]).to be > thumbSize[1]
+# 	end
+#
+# end
+
+When(/^I click on a thumbnail$/) do
+	thumbnails = get_history()
+	page.find_by_id(thumbnails[1]['id']).click()
+end
+
+Then(/^I should see the full size original in the main collage space with collage title$/) do
+	thumbnails = get_history()
+	src = thumbnails[1]['src']
+	topic = thumbnails[1]['alt']
+	expect(src).to eq page.find_by_id('main_image')['src']
+	expect(page.find_by_id('topic').text).to eq ("Collage for Topic " + topic)
+end
+
+And(/^if there is not enough space to show the entire row then a scroll bar is to be used to allow the user to see the entire row$/) do
+	# scroll Left returns the position of the 1st matched element; returns 0 if all the way left
+	# or if element is unscrollable
+	left = page.driver.execute_script("
+		var ele  = document.getElementById('history');
+		return ele.scrollLeft;")
+	expect(left).to be > 0
 end
