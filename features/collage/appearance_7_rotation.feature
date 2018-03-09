@@ -1,4 +1,4 @@
-Feature: Collage Page Requirements
+Feature: Photos should be displayed in the collage with a random rotation of -45 to 45 degrees
 
 Background:
 
