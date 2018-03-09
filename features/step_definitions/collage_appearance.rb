@@ -1,10 +1,16 @@
-require_relative 'functions/collage_appearance_parse_helper'
 require_relative 'functions/collage_appearance_helper'
 require_relative 'functions/collage_helper'
 
 Given(/^error shown$/) do
   visit "http://localhost:8080/Implementation/index.html"
   fill_in('text_input', :with => 'a;lskdfjl;askdjfl;akjd;lka;kdjf;lakdjfl;s')
+  click_button('build')
+  sleep(12)
+end
+
+Given(/^there is a valid image on the collage page$/) do
+  visit "http://localhost:8080/Implementation/index.html"
+  fill_in('text_input', :with => "cat")
   click_button('build')
   sleep(12)
 end
@@ -16,7 +22,7 @@ end
 
 #1
 Then(/^I should see Rectangular shape and all photos contained in the shape$/) do
-
+  check_rectangle()
 end
 
 #2

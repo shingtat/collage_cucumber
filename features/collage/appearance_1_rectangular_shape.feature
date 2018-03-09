@@ -1,7 +1,7 @@
 Feature: Rectangular shape and all photos contained in the shape.
 Background:
 
-Given I am on the Collage Page
+Given there is a valid image on the collage page
 
 Scenario: collage appearance
   When collage loads

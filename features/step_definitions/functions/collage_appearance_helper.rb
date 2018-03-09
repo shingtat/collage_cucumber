@@ -1,3 +1,22 @@
+def check_rectangle()
+	#check top left corner equal to bottom left corner
+	truth = page.driver.execute_script("
+		var image  = document.getElementById('main_image').getBoundingClientRect();
+		var left = image.left;
+		var right = image.right;
+		var top = image.top+10;
+		var bottom = image.bottom;
+		
+		var topLeft = document.elementFromPoint(left, top);
+		var bottomLeft = document.elementFromPoint(left, bottom);
+		var topRight = document.elementFromPoint(right-1, top);
+		var bottomRight = document.elementFromPoint(right-1, bottom);
+		return (topLeft === bottomLeft && topRight === bottomRight);
+		;")
+	puts truth
+	expect(truth).to be_truthy
+end
+
 def findAverage(fileName)
   #total sum of all areas
   sum = 0;
