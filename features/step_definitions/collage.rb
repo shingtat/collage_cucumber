@@ -1,5 +1,6 @@
-require_relative 'collage_appearance_helper'
-require_relative 'collage_helper'
+require_relative 'functions/collage_appearance_helper'
+require_relative 'functions/collage_helper'
+require_relative 'functions/collage_history_helper'
 
 Given(/^I am on the Collage Page$/) do
   visit "http://localhost:8080/Implementation/collage.html"
@@ -141,4 +142,80 @@ end
 Then(/^I should see Photos should be displayed in the collage with a random rotation of "([^"]*)" to "([^"]*)" degrees$/) do |angle1, angle2|
   confirm = angleConfirmation("rotation.txt", angle1.to_i, angle2.to_i)
   expect(confirm).to eq(true)
+end
+
+Given(/^there are two history images on the collage page$/) do
+  visit "http://localhost:8080/Implementation/index.html"
+  fill_in('text_input', :with => "cat")
+  click_button('build')
+  sleep(12)
+  fill_in('text_input', :with => "dog")
+  click_button('build')
+  sleep(12)
+  fill_in('text_input', :with => "dolphin")
+  click_button('build')
+  sleep(12)
+end
+
+When(/^I see the history bar$/) do
+	expect(page.find_by_id('history')).to be_truthy
+end
+
+Then(/^I should see the Previous Collage Picker at the bottom of the page$/) do
+	posHistory = history_top()
+
+	posTopic = topic_bot()
+
+	posImage = image_bot()
+
+	posBuild = build_bot()
+	posInput = input_bot()
+
+	posExport = export_bot()
+
+	expect(posHistory).to be > posTopic
+	expect(posHistory).to be > posImage
+	expect(posHistory).to be > posBuild
+	expect(posHistory).to be > posInput
+	expect(posHistory).to be > posExport
+
+end
+
+# Then(/^I should see Previous Collage Picker shows scaled down versions of all previous collages generated in the session by the user$/) do
+# 	prevImages = read_file("/Users/allenhuang/Desktop/send/imageLogs.txt")
+# 	thumbnails = get_history()
+# 	mainImageSize = get_main_image()
+# 	#verify all previous collages are present
+# 	thumbnails.each do |thumbnail|
+# 		expect(prevImages).to include thumbnail['src']
+# 		thumbSize = get_image_size(thumbnail)
+# 		expect(mainImageSize[0]).to be > thumbSize[0]
+# 		expect(mainImageSize[1]).to be > thumbSize[1]
+# 	end
+#
+# end
+
+And(/^I should see the Previous Collage Picker does not show collage currently in the main collage space$/) do
+	thumbnails = get_history()
+	thumbnails.each do |ele|
+		#checks if the element in the history bar is the same picture as main_image
+		if ele['src'].eql? page.find_by_id('main_image')['src']
+			#this element must not be displayed
+			expect(ele.css_value('display')).to eq "none"
+		end
+	end
+end
+
+And(/^I should see the Previous Collage Picker displays all collages in a single horizontal row$/) do
+	thumbnails = get_history()
+	tops = []
+	bots = []
+	thumbnails.each do |ele|
+		if not ele.css_value('display').eql? "none" #ele is being
+			tops << get_image_pos(ele)[0]
+			bots << get_image_pos(ele)[1]
+		end
+	end
+	expect(tops.same_values?).to be true
+	expect(bots.same_values?).to be true
 end

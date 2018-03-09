@@ -1,4 +1,4 @@
-require_relative 'index_helper.rb'
+require_relative 'functions/index_helper.rb'
 
 Given(/^I am on the Index Page$/) do
   visit "http://localhost:8080/Implementation/index.html"
