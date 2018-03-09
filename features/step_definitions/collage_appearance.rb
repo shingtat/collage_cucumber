@@ -1,3 +1,4 @@
+require_relative 'functions/collage_appearance_parse_helper'
 require_relative 'functions/collage_appearance_helper'
 require_relative 'functions/collage_helper'
 
@@ -62,7 +63,7 @@ end
 
 #5
 Then(/^I should see Each photo has a 3 pixel white frame surrounding it$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(whiteBorderTest('/home/student/desktop/')).to eq(true)
 end
 
 #6
@@ -78,7 +79,7 @@ end
 
 #8
 Then(/^I should see No white (empty) space should be present in the collage$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(noWhiteSpace('/home/student/desktop/background.txt')).to eq(true)
 end
 
 Then(/^I should see that "([^"]*)" should be returned to the user in the main collage space$/) do |string|

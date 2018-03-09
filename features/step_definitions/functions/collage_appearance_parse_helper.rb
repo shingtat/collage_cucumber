@@ -18,10 +18,10 @@ def borderCheck(fileName)
   return true
 end
 
-def whiteBorderTest()
+def whiteBorderTest(fileDirectory)
   counter = 0
   for i in 1..30
-    return false if borderCheck("border" + i.to_s + ".txt")==false
+    return false if borderCheck(fileDirectory + "border" + i.to_s + ".txt")==false
   end
   return true
 end
