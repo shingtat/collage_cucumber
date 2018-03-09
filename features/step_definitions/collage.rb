@@ -102,15 +102,15 @@ When(/^export collage button loads$/) do
 end
 
 #Clicking button allows the user to download a PNG image of the collage
-Then(/^I should see Clicking button allows the user to download a PNG image of the collage$/) do
-  click_button("export")
-  sleep(5)
-  expect(File.exist?('/Users/Master/Downloads/downloadedCollage1.png')).to eq(true)
-end
+# Then(/^I should see Clicking button allows the user to download a PNG image of the collage$/) do
+#   click_button("export")
+#   sleep(5)
+#   expect(File.exist?('/Users/Master/Downloads/downloadedCollage1.png')).to eq(true)
+# end
 
 #Size of image should match the displayed collage’s size
 # Then(/^I should see Size of image should match the displayed collage’s size$/) do
-#   num = File.open('byte.txt').read
+#   num = File.open('/home/student/desktop/byte.txt').read
 #   expect(num.to_i).to eq(fileSize('/Users/Master/Downloads/downloadedCollage1.png'))
 # end
 
@@ -193,7 +193,7 @@ And(/^I should see the Previous Collage Picker displays all collages in a single
 end
 
 # Then(/^I should see Previous Collage Picker shows scaled down versions of all previous collages generated in the session by the user$/) do
-# 	prevImages = read_file("/Users/allenhuang/Desktop/send/imageLogs.txt")
+# 	prevImages = read_file("/home/student/desktop/imageLogs.txt")
 # 	thumbnails = get_history()
 # 	mainImageSize = get_main_image()
 # 	#verify all previous collages are present
