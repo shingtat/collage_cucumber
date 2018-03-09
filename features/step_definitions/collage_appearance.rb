@@ -13,7 +13,12 @@ When(/^collage loads$/) do
   find_by_id("main_image")
 end
 
+#1
+Then(/^I should see Rectangular shape and all photos contained in the shape$/) do
 
+end
+
+#2
 Then(/^I should see the Collage centered in the page$/) do
 	imageLeft = image_left()
 	imageRight = image_right()
@@ -27,7 +32,7 @@ Then(/^I should see the Collage centered in the page$/) do
 	expect(imageLeft).to eq distRight
 end
 
-
+#3
 Then(/^I should see the Collage meets the width requirements$/) do
 	imageWidth = image_width()
 	windowWidth = page.driver.browser.manage.window.size[0]
@@ -41,6 +46,7 @@ Then(/^I should see the Collage meets the width requirements$/) do
 	end
 end
 
+#3
 Then(/^I should see the Collage meets the height requirements$/) do
 	imageHeight = image_height()
 	windowHeight = page.driver.browser.manage.window.size[1]
@@ -54,13 +60,25 @@ Then(/^I should see the Collage meets the height requirements$/) do
 	end
 end
 
+#5
+Then(/^I should see Each photo has a 3 pixel white frame surrounding it$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+#6
 Then(/^I should see the average size of the photos (after scaling) shall be 1 out of 20th of the available rectangular space$/) do
   expect(findAverage("/home/student/desktop/size.txt")).to eq(true)
 end
 
+#7
 Then(/^I should see Photos should be displayed in the collage with a random rotation of "([^"]*)" to "([^"]*)" degrees$/) do |angle1, angle2|
   confirm = angleConfirmation("/home/student/desktop/rotation.txt", angle1.to_i, angle2.to_i)
   expect(confirm).to eq(true)
+end
+
+#8
+Then(/^I should see No white (empty) space should be present in the collage$/) do
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 Then(/^I should see that "([^"]*)" should be returned to the user in the main collage space$/) do |string|
